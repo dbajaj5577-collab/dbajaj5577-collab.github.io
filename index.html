@@ -3,477 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daksh Bajaj — Computer Science Undergrad</title>
-<meta name="description" content="Daksh Bajaj — Computer Science undergraduate at Conestoga College. Projects in C, C++, and Python. Seeking IT Internship opportunities.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="description" content="Daksh Bajaj — Conestoga College student. Event marketing, graphic design, and software projects in C, C++, and Python.">
+<title>Daksh Bajaj — Design &amp; Computer Science</title>
 <style>
   :root{
-    --paper:#EEF0E8;
-    --ink:#10233F;
-    --ink-soft:#4A5568;
-    --accent:#2F6F6A;
-    --accent-soft:#DCE7E5;
-    --highlight:#E4572E;
-    --line:#CBCFC2;
-    --card:#FFFFFF;
+    --bg:#fafaf7; --fg:#1b1b1f; --muted:#62626b; --card:#ffffff; --line:#e4e4de; --accent:#d6336c;
   }
-
-  *{box-sizing:border-box; margin:0; padding:0;}
-
-  html{scroll-behavior:smooth;}
-
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Inter', sans-serif;
-    font-size:16px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#141416; --fg:#f2f2f0; --muted:#a0a0a8; --card:#1d1d21; --line:#2c2c32; --accent:#ff6b9a; }
   }
-
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
-  }
-
-  a{color:var(--accent); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
-
-  .ruler{
-    position:fixed;
-    top:0; left:0; bottom:0;
-    width:28px;
-    background-image: repeating-linear-gradient(
-      to bottom,
-      var(--line) 0px, var(--line) 1px,
-      transparent 1px, transparent 24px
-    );
-    background-position: 14px 0;
-    border-right:1px solid var(--line);
-    z-index:0;
-    display:none;
-  }
-  @media (min-width:900px){ .ruler{ display:block; } }
-
-  .wrap{
-    max-width:700px;
-    margin:0 auto;
-    padding:64px 24px 96px;
-    position:relative;
-    z-index:1;
-  }
-  @media (min-width:900px){ .wrap{ padding-left:64px; } }
-
-  /* Header */
-  header.hero{
-    margin-bottom:56px;
-  }
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
-    color:var(--accent);
-    letter-spacing:0.02em;
-    margin-bottom:14px;
-  }
-  h1{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:700;
-    font-size:clamp(2.2rem, 6vw, 3.4rem);
-    line-height:1.05;
-    letter-spacing:-0.01em;
-  }
-  .role{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:clamp(1.05rem, 2.4vw, 1.3rem);
-    color:var(--ink-soft);
-    margin-top:10px;
-    font-weight:500;
-  }
-  .lede{
-    max-width:56ch;
-    margin-top:22px;
-    color:var(--ink-soft);
-    font-size:1.02rem;
-  }
-
-  .links{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:28px;
-  }
-  .pill{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    padding:9px 16px;
-    border:1px solid var(--line);
-    border-radius:100px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
-    color:var(--ink);
-    background:var(--card);
-    transition:border-color .15s ease, transform .15s ease;
-  }
-  .pill:hover{ border-color:var(--accent); text-decoration:none; transform:translateY(-1px); }
-  .pill.cta{
-    background:var(--highlight);
-    color:#fff;
-    border-color:var(--highlight);
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:600;
-  }
-  .pill.cta:hover{ background:#c9481f; border-color:#c9481f; }
-
-  /* Section scaffolding */
-  section{
-    margin-top:56px;
-    padding-top:24px;
-    border-top:1px solid var(--line);
-  }
-  .meta-label{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    color:var(--accent);
-    margin-bottom:8px;
-  }
-  h2{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:600;
-    font-size:1.5rem;
-    margin-bottom:18px;
-  }
-
-  /* About */
-  #about p{ color:var(--ink-soft); max-width:60ch; }
-  #about p + p{ margin-top:12px; }
-
-  /* Skills */
-  .skill-group{ margin-bottom:16px; }
-  .skill-group:last-child{ margin-bottom:0; }
-  .skill-group h3{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
-    font-weight:500;
-    color:var(--ink-soft);
-    margin-bottom:8px;
-  }
-  .tags{ display:flex; flex-wrap:wrap; gap:8px; }
-  .tag{
-    font-size:14px;
-    padding:5px 12px;
-    background:var(--accent-soft);
-    color:var(--accent);
-    border-radius:6px;
-    font-weight:500;
-  }
-
-  /* Projects */
-  .project{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:22px 24px;
-    margin-bottom:18px;
-  }
-  .project:last-child{ margin-bottom:0; }
-  .project-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    gap:12px;
-    flex-wrap:wrap;
-  }
-  .project h3{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:1.15rem;
-    font-weight:600;
-  }
-  .project .when{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    color:var(--ink-soft);
-    white-space:nowrap;
-  }
-  .project .context{
-    font-size:14px;
-    color:var(--ink-soft);
-    margin-top:2px;
-    margin-bottom:12px;
-    font-style:italic;
-  }
-  .project ul{ padding-left:20px; color:var(--ink-soft); }
-  .project li + li{ margin-top:6px; }
-  .project .tags{ margin-top:14px; }
-  .project a.repo{
-    display:inline-block;
-    margin-top:12px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
-  }
-
-  /* Experience timeline */
-  .tl-item{
-    position:relative;
-    padding-left:22px;
-    margin-bottom:26px;
-  }
-  .tl-item:last-child{ margin-bottom:0; }
-  .tl-item::before{
-    content:"";
-    position:absolute;
-    left:0; top:6px;
-    width:9px; height:9px;
-    border-radius:50%;
-    background:var(--accent);
-  }
-  .tl-item::after{
-    content:"";
-    position:absolute;
-    left:4px; top:16px; bottom:-26px;
-    width:1px;
-    background:var(--line);
-  }
-  .tl-item:last-child::after{ display:none; }
-  .tl-item h3{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:1.05rem;
-    font-weight:600;
-  }
-  .tl-item .role-line{
-    font-size:14px;
-    color:var(--ink-soft);
-    margin-top:1px;
-  }
-  .tl-item .when{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    color:var(--ink-soft);
-    margin-top:4px;
-  }
-  .tl-item p{
-    margin-top:10px;
-    color:var(--ink-soft);
-    font-size:14.5px;
-    max-width:58ch;
-  }
-
-  /* Education */
-  .edu-card{
-    display:flex;
-    justify-content:space-between;
-    gap:16px;
-    flex-wrap:wrap;
-  }
-  .edu-card .when{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    color:var(--ink-soft);
-    white-space:nowrap;
-  }
-  #education h3{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.1rem; }
-  #education .school{ color:var(--ink-soft); font-size:14px; margin-top:2px; }
-  #education ul{ margin-top:12px; padding-left:20px; color:var(--ink-soft); font-size:14.5px; }
-  #education li + li{ margin-top:5px; }
-
-  /* Contact / footer */
-  footer{
-    margin-top:56px;
-    padding-top:28px;
-    border-top:1px solid var(--line);
-    text-align:left;
-  }
-  footer h2{ margin-bottom:10px; }
-  footer p{ color:var(--ink-soft); max-width:52ch; margin-bottom:20px; }
-  .fine-print{
-    margin-top:40px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    color:var(--ink-soft);
-    opacity:0.7;
-  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+  a{color:var(--accent)}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  header.hero{padding:72px 0 40px}
+  .eyebrow{color:var(--muted);font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+  h1{font-size:clamp(40px,8vw,72px);line-height:1.05;margin:8px 0 12px}
+  .tag{font-size:20px;color:var(--muted);margin:0 0 16px}
+  .links a{margin-right:16px;font-weight:600}
+  section{padding:48px 0;border-top:1px solid var(--line)}
+  .num{color:var(--accent);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  h2{font-size:30px;margin:4px 0 20px}
+  h3{margin:0 0 4px;font-size:19px}
+  .meta{color:var(--muted);font-size:14px;margin-bottom:8px}
+  .chips span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 12px;margin:4px 6px 4px 0;font-size:14px;background:var(--card)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px}
+  ul{padding-left:20px;margin:8px 0}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+  .piece{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0}
+  .piece img{display:block;width:100%;height:auto}
+  .piece figcaption{padding:12px 14px;font-size:14px}
+  .piece figcaption b{display:block;font-size:15px}
+  .slot{aspect-ratio:4/5;display:grid;place-items:center;text-align:center;padding:16px;color:var(--muted);
+        background:repeating-linear-gradient(45deg,transparent 0 12px,var(--line) 12px 13px);font-size:14px}
+  .note{color:var(--muted);font-size:14px}
+  footer{padding:32px 0 56px;color:var(--muted);font-size:14px}
 </style>
 </head>
 <body>
-
-<div class="ruler" aria-hidden="true"></div>
-
 <div class="wrap">
 
-  <header class="hero">
-    <div class="eyebrow">Computer Science Undergrad · Conestoga College</div>
-    <h1>Daksh Bajaj</h1>
-    <div class="role">Building software, one project at a time.</div>
-    <p class="lede">
-      Hands-on with C, C++, and Python through team-built projects — a banking system, a ride-booking engine, a budgeting tool.
-      Currently looking for an IT Internship where I can put that to work.
-    </p>
-    <div class="links">
-      <a class="pill" href="mailto:dbajaj5577@gmail.com">Email me</a>
-      <a class="pill" href="https://www.linkedin.com/in/daksh-bajaj-a659ba3a6" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="pill" href="https://github.com/dbajaj5577-collab" target="_blank" rel="noopener">GitHub</a>
-      <a class="pill cta" href="./Daksh_Bajaj_Resume.pdf" target="_blank" rel="noopener">Download resume</a>
-    </div>
-  </header>
+<header class="hero">
+  <div class="eyebrow">Conestoga College · Design &amp; Computer Science</div>
+  <h1>Daksh Bajaj</h1>
+  <p class="tag">I design for students and build the systems behind them.</p>
+  <p>Computer Science student who markets and promotes campus tech events for Conestoga's Google Developer Group, and builds software in C, C++, and Python. Looking for a role where creative work and reliable, detail-oriented execution both matter.</p>
+  <p class="links">
+    <a href="mailto:dbajaj5577@gmail.com">Email me</a>
+    <a href="https://www.linkedin.com/in/daksh-bajaj-a659ba3a6">LinkedIn</a>
+    <a href="https://github.com/dbajaj5577-collab">GitHub</a>
+    <a href="Daksh_Bajaj_Resume.pdf">Download resume</a>
+  </p>
+</header>
 
-  <section id="about">
-    <div class="meta-label">01 — about</div>
-    <h2>What I'm about</h2>
-    <p>
-      I'm a Computer Science student who likes taking a system apart to see how the pieces fit — then rebuilding it better.
-      Most of my learning has come from small, real team projects: figuring out how a ride-booking cart should behave, how
-      a banking module should fail safely, how to keep four people's C code from stepping on each other.
-    </p>
-    <p>
-      Outside of coursework, I help run events for Conestoga's Google Developer Group — planning and marketing hackathons like
-      ConHacks and Build with Gemma — which has taught me as much about communication and follow-through as any class has.
-    </p>
-  </section>
+<section id="design">
+  <div class="num">01 — design work</div>
+  <h2>Graphic design</h2>
+  <p class="note">Self-initiated concept pieces for fictional student events: a poster, a social post, and a monthly bulletin board calendar. Real event work from GDG and ConHacks is coming soon.</p>
 
-  <section id="skills">
-    <div class="meta-label">02 — skills</div>
-    <h2>What I work with</h2>
-    <div class="skill-group">
-      <h3>Languages</h3>
-      <div class="tags">
-        <span class="tag">C</span>
-        <span class="tag">C++</span>
-        <span class="tag">Python</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <h3>Tools & practices</h3>
-      <div class="tags">
-        <span class="tag">Git &amp; GitHub</span>
-        <span class="tag">Visual Studio</span>
-        <span class="tag">IntelliJ IDEA</span>
-        <span class="tag">Test-Driven Development</span>
-        <span class="tag">Unit Testing</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <h3>Also bring to the table</h3>
-      <div class="tags">
-        <span class="tag">Documentation</span>
-        <span class="tag">Problem solving</span>
-        <span class="tag">Teamwork</span>
-        <span class="tag">Communication</span>
-      </div>
-    </div>
-  </section>
+  <div class="gallery">
+    <figure class="piece">
+      <img src="designs/hack-night-poster.svg" alt="Concept poster for a student hackathon called Hack Night" loading="lazy">
+      <figcaption><b>Event poster (concept)</b>Print layout · bold type, colour blocking</figcaption>
+    </figure>
+    <figure class="piece">
+      <img src="designs/workshop-social-graphic.svg" alt="Concept social media graphic for a Workshop Wednesday resume review" loading="lazy">
+      <figcaption><b>Social media graphic (concept)</b>Square format for Instagram</figcaption>
+    </figure>
+    <figure class="piece">
+      <img src="designs/november-activity-calendar.svg" alt="Concept monthly activity calendar for a student bulletin board" loading="lazy">
+      <figcaption><b>Monthly activity calendar (concept)</b>Bulletin board format</figcaption>
+    </figure>
+  </div>
+</section>
 
-  <section id="projects">
-    <div class="meta-label">03 — projects</div>
-    <h2>Things I've built</h2>
+<section id="about">
+  <div class="num">02 — about</div>
+  <h2>What I'm about</h2>
+  <p>I like taking a system apart to see how the pieces fit, then rebuilding it better. Most of my learning has come from small, real team projects: figuring out how a ride-booking cart should behave, how a banking module should fail safely, how to keep four people's C code from stepping on each other.</p>
+  <p>Outside of coursework, I help run events for Conestoga's Google Developer Group, planning and marketing hackathons like ConHacks and Build with Gemma. That work has taught me about communication, deadlines, and keeping a consistent look across many channels.</p>
+</section>
 
-    <div class="project">
-      <div class="project-top">
-        <h3>Banking Management System</h3>
-        <span class="when">2026</span>
-      </div>
-      <div class="context">Team project · C · Test-Driven Development</div>
-      <ul>
-        <li>Built the deposit module and the shared header file the whole team's code relied on</li>
-        <li>Wrote validation rules so deposits behaved differently for savings vs. checking accounts</li>
-        <li>Followed strict TDD in Visual Studio, aiming for full test coverage before writing the real logic</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">C</span>
-        <span class="tag">TDD</span>
-        <span class="tag">Unit Testing</span>
-      </div>
-      <a class="repo" href="https://github.com/prishapatel2105/BankingManagementSystem-" target="_blank" rel="noopener">View repository →</a>
-    </div>
+<section id="skills">
+  <div class="num">03 — skills</div>
+  <h2>What I work with</h2>
+  <h3>Design &amp; marketing</h3>
+  <div class="chips"><span>Event promotion</span><span>Social media marketing</span><span>Campus outreach</span><!-- Add only tools you actually use, e.g. Photoshop, Illustrator, InDesign, Canva --></div>
+  <h3 style="margin-top:16px">Languages</h3>
+  <div class="chips"><span>C</span><span>C++</span><span>Python</span></div>
+  <h3 style="margin-top:16px">Tools &amp; practices</h3>
+  <div class="chips"><span>Git &amp; GitHub</span><span>Visual Studio</span><span>IntelliJ IDEA</span><span>Test-Driven Development</span><span>Unit Testing</span></div>
+  <h3 style="margin-top:16px">Also bring to the table</h3>
+  <div class="chips"><span>Documentation</span><span>Problem solving</span><span>Teamwork</span><span>Communication</span><span>Meeting deadlines</span></div>
+</section>
 
-    <div class="project">
-      <div class="project-top">
-        <h3>Amusement Park Ticket Generator</h3>
-        <span class="when">May – Aug 2026</span>
-      </div>
-      <div class="context">4-person team project · C</div>
-      <ul>
-        <li>Owned the eligibility and ride-selection logic — checking each visitor's age, height, and weight against 15 rides</li>
-        <li>Built a dynamic cart with duplicate prevention, a tiered discount system, and a free "mystery ride" bonus</li>
-        <li>Worked across structs, pointers, and file I/O in a modular multi-file C codebase</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">C</span>
-        <span class="tag">Dynamic memory</span>
-        <span class="tag">File handling</span>
-      </div>
-      <a class="repo" href="https://github.com/prishapatel2105/S1_G7_Project2" target="_blank" rel="noopener">View repository →</a>
-    </div>
+<section id="experience">
+  <div class="num">04 — experience</div>
+  <h2>Where I've spent my time</h2>
+  <div class="card">
+    <h3>Executive Lead</h3>
+    <div class="meta">Google Developer Group @ Conestoga College · May 2026 – Present</div>
+    <p>Part of the core organizing and marketing team behind GDG Conestoga's flagship events, including ConHacks and Build with Gemma. Handled logistics, cross-team communication, and social/campus marketing to drive turnout.</p>
+  </div>
+  <div class="card">
+    <h3>Growth Hacker</h3>
+    <div class="meta">ConHacks 2026 · Aug 2026</div>
+    <p>Supported marketing and outreach strategy for a large student hackathon, helping drive participant sign-ups.</p>
+  </div>
+</section>
 
-    <div class="project">
-      <div class="project-top">
-        <h3>Expense Tracker</h3>
-        <span class="when">Jul 2026</span>
-      </div>
-      <div class="context">Solo project · Python</div>
-      <ul>
-        <li>Wrote a logic-based command-line tool to log and total personal expenses on the fly</li>
-        <li>Used loops, conditionals, and lists to process real-time user input</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">Python</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience">
-    <div class="meta-label">04 — experience</div>
-    <h2>Where I've spent my time</h2>
-
-    <div class="tl-item">
-      <h3>Executive Lead</h3>
-      <div class="role-line">Google Developer Group @ Conestoga College</div>
-      <div class="when">May 2026 – Present</div>
-      <p>Part of the core organizing and marketing team behind GDG Conestoga's flagship events, including ConHacks and Build with Gemma — handling logistics, cross-team communication, and social/campus marketing to drive turnout.</p>
-    </div>
-
-    <div class="tl-item">
-      <h3>Growth Hacker</h3>
-      <div class="role-line">ConHacks 2026</div>
-      <div class="when">Aug 2026</div>
-      <p>Supported marketing and outreach strategy for a large student hackathon, helping drive participant sign-ups.</p>
-    </div>
-  </section>
-
-  <section id="education">
-    <div class="meta-label">05 — education</div>
-    <h2>Education</h2>
-    <div class="edu-card">
-      <div>
-        <h3><a href="https://www.conestogac.on.ca/fulltime/bachelor-of-computer-science" target="_blank" rel="noopener">Bachelor of Computer Science</a></h3>
-        <div class="school">Conestoga College, Waterloo, ON</div>
-      </div>
-      <div class="when">Jan 2026 – Sep 2028 (anticipated)</div>
-    </div>
+<section id="projects">
+  <div class="num">05 — projects</div>
+  <h2>Things I've built</h2>
+  <div class="card">
+    <h3>Banking Management System</h3>
+    <div class="meta">2026 · Team project · C · Test-Driven Development</div>
     <ul>
-      <li>GPA — Term 1: 3.84, Term 2: 3.74</li>
-      <li>Focus areas: software development, testing methodologies, software project management, cybersecurity &amp; privacy</li>
+      <li>Built the deposit module and the shared header file the whole team's code relied on</li>
+      <li>Wrote validation rules so deposits behaved differently for savings vs. checking accounts</li>
+      <li>Followed strict TDD in Visual Studio, aiming for full test coverage before writing the real logic</li>
     </ul>
-  </section>
+    <a href="https://github.com/prishapatel2105/BankingManagementSystem-">View repository →</a>
+  </div>
+  <div class="card">
+    <h3>Amusement Park Ticket Generator</h3>
+    <div class="meta">May – Aug 2026 · 4-person team project · C</div>
+    <ul>
+      <li>Owned the eligibility and ride-selection logic, checking each visitor's age, height, and weight against 15 rides</li>
+      <li>Built a dynamic cart with duplicate prevention, a tiered discount system, and a free "mystery ride" bonus</li>
+      <li>Worked across structs, pointers, and file I/O in a modular multi-file C codebase</li>
+    </ul>
+    <a href="https://github.com/prishapatel2105/S1_G7_Project2">View repository →</a>
+  </div>
+  <div class="card">
+    <h3>Expense Tracker</h3>
+    <div class="meta">Jul 2026 · Solo project · Python</div>
+    <ul>
+      <li>Wrote a logic-based command-line tool to log and total personal expenses on the fly</li>
+      <li>Used loops, conditionals, and lists to process real-time user input</li>
+    </ul>
+  </div>
+</section>
 
-  <footer id="contact">
-    <div class="meta-label">06 — contact</div>
-    <h2>Let's talk</h2>
-    <p>
-      I'm actively looking for IT Internship opportunities. If you're hiring — or just want to chat about a project —
-      reach out any time.
-    </p>
-    <div class="links">
-      <a class="pill cta" href="mailto:dbajaj5577@gmail.com">dbajaj5577@gmail.com</a>
-      <a class="pill" href="https://www.linkedin.com/in/daksh-bajaj-a659ba3a6" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="pill" href="https://github.com/dbajaj5577-collab" target="_blank" rel="noopener">GitHub</a>
-    </div>
-    <div class="fine-print">Kitchener, Ontario, Canada</div>
-  </footer>
+<section id="education">
+  <div class="num">06 — education</div>
+  <h2>Education</h2>
+  <h3><a href="https://www.conestogac.on.ca/fulltime/bachelor-of-computer-science">Bachelor of Computer Science</a></h3>
+  <div class="meta">Conestoga College, Waterloo, ON · Jan 2026 – Sep 2028 (anticipated)</div>
+  <ul>
+    <li>GPA — Term 1: 3.84, Term 2: 3.74</li>
+    <li>Focus areas: software development, testing methodologies, software project management, cybersecurity &amp; privacy</li>
+  </ul>
+</section>
 
+<section id="contact">
+  <div class="num">07 — contact</div>
+  <h2>Let's talk</h2>
+  <p>I'm looking for opportunities where I can combine design, marketing, and technical skills. Reach out any time.</p>
+  <p><a href="mailto:dbajaj5577@gmail.com">dbajaj5577@gmail.com</a> · <a href="https://www.linkedin.com/in/daksh-bajaj-a659ba3a6">LinkedIn</a> · <a href="https://github.com/dbajaj5577-collab">GitHub</a><br>Kitchener, Ontario, Canada</p>
+</section>
+
+<footer>© 2026 Daksh Bajaj</footer>
 </div>
-
 </body>
 </html>
